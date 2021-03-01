@@ -18,22 +18,21 @@ allFooter.addEventListener("click", newFooterClick);
 
 
 // Feature 2 "Hamburger Menu"
-const hambMenu = document.querySelector('button');
-const navbarHeader = document.getElementById('navbarHeader');
-hambMenu.addEventListener("click", toggleOn); 
-
 const toggleOn = () => {
     navbarHeader.classList.toggle("collapse");
 }
+const hambMenu = document.querySelector('button');
+hambMenu.addEventListener("click", toggleOn);
+const navbarHeader = document.getElementById('navbarHeader');
 
 
 // Feature 3
-const newEditButton = document.getElementsByClassName('btn btn-sm btn-outline-secondary')[0]; // fetch the first btn in the html collection
-newEditButton.addEventListener('click', putRedText);
 const putRedText = () => {
     let cardChange = document.querySelector('p.card-text');
     cardChange.style.color = 'red';
 }
+const newEditButton = document.getElementsByClassName('btn btn-sm btn-outline-secondary')[0]; // fetch the first btn in the html collection
+newEditButton.addEventListener('click', putRedText);
 
 
 // Feature 4
@@ -56,22 +55,26 @@ newEditButton_2.addEventListener('click', putGreenText1);
 
 
 // Feature 5
-var cdnBootstrap = document.getElementsByTagName('link')[0]; //je récupère la balise link
-var doubleClicNavbar = document.querySelector('header'); // la zone header cliquable
-var headTag = document.querySelector('head');  //le parent à ajouter un child
-var statusHeader = false;
+// Fetch the 'link' element
+const cdnBootstrap = document.getElementsByTagName('link')[0];
 
-var changeCDN = function () {
-  if (statusHeader == false) {
+// Define clickable zone
+const doubleClicNavbar = document.querySelector('header');
+
+// Target the parent element where child will be modified
+const headTag = document.querySelector('head');
+const headStat = false;
+
+const modifyCDN = () => {
+  if (headStat == false) {
     cdnBootstrap.parentNode.removeChild(cdnBootstrap);
-    statusHeader = true;
-  } else if (statusHeader == true) {
+    headStat = true;
+  } else if (headStat == true) {
     headTag.appendChild(cdnBootstrap);
-    statusHeader= false;
+    headStat = false;
   }
 };
-
-doubleClicNavbar.addEventListener('dblclick', changeCDN);
+doubleClicNavbar.addEventListener('dblclick', modifyCDN);
 
 
 // Feature 6
