@@ -106,27 +106,24 @@ const hideCard = () => {
     }
 };
 // Works only with the first card, couldn't make it work for all the cards.... :(
-btnView[0].children[0].addEventListener('mouseover', hideCard);
+btnView[0].children[0].addEventListener('click', hideCard);
 
 
 
-// Feature 7
-// si un utilisateur clique sur le bouton gris ==>, la dernière card (en bas à droite) 
-// va passer en premier (en haut à gauche). On va pouvoir faire tourner les cards !
-//var cardsToMove = document.querySelectorAll('div.row');
+// Feature #7:
 
-let turnRightButton = document.querySelectorAll('a.btn:nth-child(2)')[0]; //élément bouton turnright
-
-turnRightButton.addEventListener('click',turnRight);
-
-function turnRight(event){
-	let cards = document.querySelectorAll('.album  .row')[0]; // je sélectionne le parent des cards
-    let card = document.getElementsByClassName('card')[5].parentElement; // ensemble des cards filles
-	cards.insertAdjacentHTML('afterbegin',card.outerHTML); //Ajoute la dernière carte en premier avec afterbegin
-	cards.removeChild(card);  // supprimme le dernier elemnt
-    event.preventDefault();   // bloque le comportement du navigateur par défaut
+// Fetch button to move
+const btnSwitchRight = document.querySelectorAll('.....fetch last card.......')[0];
+const switchToRight = (event) => {
+    // Select cards parent
+	let cardsParent = document.querySelectorAll('.album .row')[0];
+    // Target child element (cards)
+    let card = document.getElementsByClassName('card')[5].parentElement;
+    // Move last card to first position
+	cardsParent.insertAdjacentHTML('afterbegin',card.outerHTML);
+    // Delete last card
+	cardsParent.removeChild(card);
+    // Prevent browser default behaviour
+    event.preventDefault();
 }
-
-
-// Feature 8
-//non yet
+btnSwitchRight.addEventListener('click', switchToRight);
