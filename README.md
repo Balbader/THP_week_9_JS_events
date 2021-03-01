@@ -1,7 +1,5 @@
 # THP_week_9_JS_events
 
-Les exos 1 à 5 et le 7 sont complet.
+1 to 5 + 7 done.
 
-L'exo 6 ne fonctionne que pour la première carte, pas de boucle sur les 6 cartes.
-
-Les exos 8 et 9, non commencés.
+number 6 works partially on the first card... need help...
