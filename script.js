@@ -9,20 +9,20 @@ myFooter.addEventListener("click", onFooterClick);
 // Feature 1-bis
 const allFooter = document.querySelector('footer');
 let x = 1;
-const onFooterClick = () => { 
+const newFooterClick = () => { 
     console.log('clic numéro '+ x);
     x++;
 }
-allFooter.addEventListener("click", onFooterClick);
+allFooter.addEventListener("click", newFooterClick);
 
 // Feature 2 "Hamburger Menu"
-var menuHamb = document.querySelector('button');
-var navbarHeader = document.getElementById('navbarHeader');
-menuHamb.addEventListener("click", toggleOn); 
+const hambMenu = document.querySelector('button');
+const navbarHeader = document.getElementById('navbarHeader');
+hambMenu.addEventListener("click", toggleOn); 
 
-function toggleOn() {
+const toggleOn = () => {
     navbarHeader.classList.toggle("collapse");
-};
+}
 
 
 // Feature 3
