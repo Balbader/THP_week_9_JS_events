@@ -1,23 +1,23 @@
-// Feature 1 
+// Feature #1:
 const myFooter = document.getElementsByTagName('footer')[0];
 
-const onFooterClick = () => { 
+const onFooterClick = () => {
     console.log('clique');
 }
 myFooter.addEventListener("click", onFooterClick);
 
 
-// Feature 1-bis
+// Feature #1-bis:
 const allFooter = document.querySelector('footer');
 let x = 1;
-const newFooterClick = () => { 
+const newFooterClick = () => {
     console.log('clic numéro '+ x);
     x++;
 }
 allFooter.addEventListener("click", newFooterClick);
 
 
-// Feature 2 "Hamburger Menu"
+// Feature #2:
 const toggleOn = () => {
     navbarHeader.classList.toggle("collapse");
 }
@@ -26,7 +26,7 @@ hambMenu.addEventListener("click", toggleOn);
 const navbarHeader = document.getElementById('navbarHeader');
 
 
-// Feature 3
+// Feature #3:
 const putRedText = () => {
     let cardChange = document.querySelector('p.card-text');
     cardChange.style.color = 'red';
@@ -35,7 +35,7 @@ const newEditButton = document.getElementsByClassName('btn btn-sm btn-outline-se
 newEditButton.addEventListener('click', putRedText);
 
 
-// Feature 4
+// Feature #4:
 const newEditButton_2 = document.querySelectorAll('div.btn-group')[1].children[1]; // fetch second btn in html collection
 const btnStat = false;  // to check if it turned green or not
 const putGreenText1 = () => {
@@ -54,7 +54,7 @@ const putGreenText1 = () => {
 newEditButton_2.addEventListener('click', putGreenText1);
 
 
-// Feature 5
+// Feature #5:
 // Fetch the 'link' element
 const cdnBootstrap = document.getElementsByTagName('link')[0];
 
@@ -77,40 +77,37 @@ const modifyCDN = () => {
 doubleClicNavbar.addEventListener('dblclick', modifyCDN);
 
 
-// Feature 6
-// si un utilisateur passe sa souris sur le bouton "View" d'une card (n'importe laquelle), 
-// celle-ci va se réduire. Cela veut dire que le texte disparaît, l'image n'apparaîtra 
-// qu'à 20 % de sa taille d'origine et les boutons "Edit" / "View" restent visibles. 
-// Cette fonction sera réversible : s'il repasse sa souris, la card redevient normale !
+// Feature #6:
 
-var buttonView = document.querySelectorAll('div.btn-group');
-var imageCard = document.querySelectorAll('img.card-img-top');
-var buttonTest = true;  // va permettre de checker la bascule vert ou pas
+const btnView = document.querySelectorAll('div.btn-group');
+const imageCard = document.querySelectorAll('img.card-img-top');
 
-// stocker les textes des 6 cards
-var textBackup = [];
-var cardText = document.querySelectorAll('p.card-text');
+// Check if btn is green or not
+const btnTest = true;
+
+// Store cards content
+let textBackup = [];
+let cardText = document.querySelectorAll('p.card-text');
 cardText.forEach((text, i ) => {
     textBackup[i] = cardText[i].innerHTML;
 });
 
-function hideCard() {
-    // [0] pour la première carte
-
-    if (buttonTest) {             // si buttonTest est true, le texte disparait, réduit la taille
-        buttonTest = false;
+const hideCard = () => {
+    // if = true, content deleted and sized reduced
+    if (btnTest) {
+        btnTest = false;
         cardText[0].innerHTML = '';
         imageCard[0].style.width = '20%';
-    } else {                        // si statusButton est false, le texte est normale faut mettre en vert
-        buttonTest = true;
+    } else {
+        // if = false, content is untouched and size if 100%
+        btnTest = true;
         cardText[0].innerHTML = textBackup[0];
         imageCard[0].style.width = '100%';
     }
 };
-// Fonctionne qu'avec la première carte
-buttonView[0].children[0].addEventListener('mouseover', hideCard);
+// Works only with the first card, couldn't make it work for all the cards.... :(
+btnView[0].children[0].addEventListener('mouseover', hideCard);
 
-// multi-carte fonctionne pas, pbl avec la boucle
 
 
 // Feature 7
