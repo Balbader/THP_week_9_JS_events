@@ -63,7 +63,7 @@ const doubleClicNavbar = document.querySelector('header');
 
 // Target the parent element where child will be modified
 const headTag = document.querySelector('head');
-const headStat = false;
+let headStat = false;
 
 const modifyCDN = () => {
   if (headStat == false) {
@@ -79,34 +79,16 @@ doubleClicNavbar.addEventListener('dblclick', modifyCDN);
 
 // Feature #6:
 
-const btnView = document.querySelectorAll('div.btn-group');
-const imageCard = document.querySelectorAll('img.card-img-top');
+let mincard = document.getElementsByClassName("btn btn-sm btn-success");
 
-// Check if btn is green or not
-const btnTest = true;
 
-// Store cards content
-let textBackup = [];
-let cardText = document.querySelectorAll('p.card-text');
-cardText.forEach((text, i ) => {
-    textBackup[i] = cardText[i].innerHTML;
-});
+for (let i = 0; i < mincard.length; i++){
+  mincard[i].addEventListener("mouseover" , function(){
+    document.getElementsByClassName("card-text")[i].classList.toggle("d-none");
+    document.getElementsByClassName("card-img-top")[i].classList.toggle("w-25");
 
-const hideCard = () => {
-    // if = true, content deleted and sized reduced
-    if (btnTest) {
-        btnTest = false;
-        cardText[0].innerHTML = '';
-        imageCard[0].style.width = '20%';
-    } else {
-        // if = false, content is untouched and size if 100%
-        btnTest = true;
-        cardText[0].innerHTML = textBackup[0];
-        imageCard[0].style.width = '100%';
-    }
+  });
 };
-// Works only with the first card, couldn't make it work for all the cards.... :(
-btnView[0].children[0].addEventListener('click', hideCard);
 
 
 
