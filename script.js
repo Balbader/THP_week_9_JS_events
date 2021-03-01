@@ -6,6 +6,7 @@ const onFooterClick = () => {
 }
 myFooter.addEventListener("click", onFooterClick);
 
+
 // Feature 1-bis
 const allFooter = document.querySelector('footer');
 let x = 1;
@@ -14,6 +15,7 @@ const newFooterClick = () => {
     x++;
 }
 allFooter.addEventListener("click", newFooterClick);
+
 
 // Feature 2 "Hamburger Menu"
 const hambMenu = document.querySelector('button');
@@ -26,44 +28,34 @@ const toggleOn = () => {
 
 
 // Feature 3
-// si on clique sur le bouton "Edit" de la première card, le texte de la card va se mettre 
-// en rouge de façon irréversible (sauf si on recharge la page).
-var myEditButton = document.getElementsByClassName('btn btn-sm btn-outline-secondary')[0]; // dans la collections HTML, je prend le premier
-
-
-myEditButton.addEventListener('click', putRedText);
-
-function putRedText() {
-    var cardChange = document.querySelector('p.card-text');
+const newEditButton = document.getElementsByClassName('btn btn-sm btn-outline-secondary')[0]; // fetch the first btn in the html collection
+newEditButton.addEventListener('click', putRedText);
+const putRedText = () => {
+    let cardChange = document.querySelector('p.card-text');
     cardChange.style.color = 'red';
 }
 
+
 // Feature 4
-// si on clique sur le bouton "Edit" de la deuxième card, le texte de la card va se mettre en vert. 
-// Si on re-clique dessus, il redevient comme avant ! 
-//Tu l'as compris, il va falloir que tu cherches comment faire un "toggle" sur le style du texte.
-
-var myEditButton2 = document.querySelectorAll('div.btn-group')[1].children[1]; // dans la collections HTML, je prend le deuxième
-myEditButton2.addEventListener('click', putGreenText1);
-
-var statusButton = false;  // va permettre de checker la bascule vert ou pas
-function putGreenText1() {
-    var cardChange2 = document.querySelectorAll('p.card-text');  // je cherche l'élément à traiter
-    if (statusButton) {             // si statusButton est true, le texte est vert faut mettre en normal
-        statusButton = false;
+const newEditButton_2 = document.querySelectorAll('div.btn-group')[1].children[1]; // fetch second btn in html collection
+const btnStat = false;  // to check if it turned green or not
+const putGreenText1 = () => {
+    // find element to change
+    let cardChange_2 = document.querySelectorAll('p.card-text');
+    // if true, turn from green to regular
+    if (btnStat) {
+        btnStat = false;
         cardChange2[1].style.color = '';
-    } else {                        // si statusButton est false, le texte est normale faut mettre en vert
-        statusButton = true;
+    } else {
+    // if false, turn from regular to green
+        btnStat = true;
         cardChange2[1].style.color = 'green';
     }
 }
+newEditButton_2.addEventListener('click', putGreenText1);
+
 
 // Feature 5
-// si un utilisateur double clique sur la navbar en haut, tout Bootstrap disparaît et 
-// la page s'affiche comme si on avait oublié de mettre le CDN qui la relie au fichier CSS. 
-// Si possible, rends cette fonctionnalité réversible (un nouveau double-clic fait 
-// tout revenir à la normale).
-
 var cdnBootstrap = document.getElementsByTagName('link')[0]; //je récupère la balise link
 var doubleClicNavbar = document.querySelector('header'); // la zone header cliquable
 var headTag = document.querySelector('head');  //le parent à ajouter un child
